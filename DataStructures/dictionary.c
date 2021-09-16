@@ -36,16 +36,16 @@ void insert(struct Dictionary* dict, void* key, int keyLen, void* value, int val
 		    return;
 
 		struct Entry* entry = entry_constructor(
-            key,
-            keyLen,
-            value,
-            valueLen, 
-            dict->lastEntry,
-            NULL);
+            		key,
+            		keyLen,
+            		value,
+            		valueLen, 
+            		dict->lastEntry,
+            		NULL);
 
 		dict->lastEntry->next = entry;
 
-        //now entry is the last entry
+        	//now entry is the last entry
 		dict->lastEntry = entry;
 	}
 	else 
@@ -57,7 +57,7 @@ void insert(struct Dictionary* dict, void* key, int keyLen, void* value, int val
 void* get(struct Dictionary* dict, void* key)
 {
     if (key == NULL)
-		return NULL;
+	return NULL;
 
 	struct Entry* iterator = dict->lastEntry;
 	while (iterator) 
@@ -74,7 +74,7 @@ void* get(struct Dictionary* dict, void* key)
 void remove(struct Dictionary* dict, void* key)
 {
     if (key == NULL)
-		return;
+	return;
 
 	struct Entry* iterator = dict->lastEntry;
 	while (iterator)
@@ -89,7 +89,7 @@ void remove(struct Dictionary* dict, void* key)
 			else
 				dict->lastEntry = iterator->previous;
 
-            free(iterator);
+            		free(iterator);
 			return;
 		}
 
@@ -106,10 +106,10 @@ void update(struct Dictionary* dict, void* key, void* value, int valueLen)
 	while (iterator)
 	{
 		if (dict->compare(iterator->key, key))
-        {
-            free(iterator->value);
-            iterator->value = memcpy(malloc(valueLen), value, valueLen);
-        }
+        	{
+            		free(iterator->value);
+            		iterator->value = memcpy(malloc(valueLen), value, valueLen);
+        	}
 			
 		iterator = iterator->previous;
 	}
