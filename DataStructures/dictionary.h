@@ -17,6 +17,6 @@ struct Dictionary
 
 struct Dictionary* dictionary_constructor(int (*compare)(void* firstKey, void* secondKey));
 
-void dictionary_destructor(struct Dictionary* entry);
+void dictionary_destructor(struct Dictionary* dict);
 
 #endif

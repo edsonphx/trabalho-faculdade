@@ -25,6 +25,20 @@ struct Dictionary* dictionary_constructor(int (*compare)(void* firstKey, void* s
     return result;
 }
 
+void dictionary_destructor(struct Dictionary* dict)
+{
+	struct Entry* iterator = dict->lastEntry;
+	while (iterator) 
+	{
+		if (iterator->next)
+			free(iterator->next);
+
+		free(iterator->key);
+		free(iterator->value);
+
+		iterator = iterator->previous;
+	}
+}
 void insert(struct Dictionary* dict, void* key, int keyLen, void* value, int valueLen)
 {
     if (key == NULL || value == NULL)
