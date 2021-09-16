@@ -60,7 +60,7 @@ struct Dictionary** select(struct Repository* repository, char* table, int* outN
 
 	struct Dictionary** result = malloc(sizeof(struct Dictionary*) * numLines);
 	int resultIndex = 0;
-    while (fgets(line, BYTES_PER_LINE, file)) 
+    	while (fgets(line, BYTES_PER_LINE, file)) 
 	{
 		if (linesRead == 0)
 		{
