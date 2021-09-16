@@ -45,7 +45,7 @@ void insert(struct Dictionary* dict, void* key, int keyLen, void* value, int val
 
 		dict->lastEntry->next = entry;
 
-        	//now entry is the last entry
+		//now entry is the last entry
 		dict->lastEntry = entry;
 	}
 	else 
