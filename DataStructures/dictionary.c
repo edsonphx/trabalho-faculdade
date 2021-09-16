@@ -88,8 +88,8 @@ void remove(struct Dictionary* dict, void* key)
 				iterator->next->previous = iterator->previous;
 			else
 				dict->lastEntry = iterator->previous;
-
-            		free(iterator);
+			
+			free(iterator);
 			return;
 		}
 
