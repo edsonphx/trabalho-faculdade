@@ -33,11 +33,11 @@ struct Dictionary** select(struct Repository* repository, char* table, int* outN
 	sprintf(tablename, "%s\\%s\\data.csv",repository->databasePath, table);
 
 	FILE* file = fopen(tablename, "a+");
-    if (file == NULL)
-    {
-        printf("Invalid path %s.\n", tablename);
-        return NULL;
-    }
+    	if (file == NULL)
+    	{
+        	printf("Invalid path %s.\n", tablename);
+        	return NULL;
+    	}
 
 	
 
