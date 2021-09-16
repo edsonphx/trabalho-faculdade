@@ -5,7 +5,7 @@
 
 char** split_string(char* source, char separator, int* numWords)
 {
-    if (source == NULL)
+    	if (source == NULL)
 		return NULL;
 
 	int numSeparator = 0;
