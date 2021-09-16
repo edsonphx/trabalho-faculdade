@@ -106,10 +106,10 @@ void update(struct Dictionary* dict, void* key, void* value, int valueLen)
 	while (iterator)
 	{
 		if (dict->compare(iterator->key, key))
-        	{
-            		free(iterator->value);
-            		iterator->value = memcpy(malloc(valueLen), value, valueLen);
-        	}
+		{
+			free(iterator->value);
+			iterator->value = memcpy(malloc(valueLen), value, valueLen);
+		}
 			
 		iterator = iterator->previous;
 	}
