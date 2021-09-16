@@ -6,11 +6,11 @@
 struct Dictionary 
 {
 	void (*insert)(struct Dictionary* dict, void* key, int keyLen, void* value, int valueLen);
-    	void* (*get)(struct Dictionary* dict, void* key);
-    	void (*remove)(struct Dictionary* dict, void* key);
+	void* (*get)(struct Dictionary* dict, void* key);
+	void (*remove)(struct Dictionary* dict, void* key);
 	void (*update)(struct Dictionary* dict, void* key, void* value, int valueLen);
 
-    	int (*compare)(void* firstKey, void* secondKey);
+	int (*compare)(void* firstKey, void* secondKey);
 
 	struct Entry* lastEntry;
 };
