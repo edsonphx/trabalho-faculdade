@@ -36,6 +36,15 @@ int main(int argc, char **argv)
 			if (strcmp((char*)data->get(data, "password"), (char*)password) == 0)
 			{
 				printf("\n\nLogado");
+
+				//inserindo dados
+				struct Dictionary* newUser = dictionary_constructor(NULL);
+
+				newUser->insert(newUser, "user", 5, "test", 5);
+				newUser->insert(newUser, "password", 9, "test", 5);
+
+				repository.insert(&repository, "Users", newUser);
+				//
 			}
 			else
 			{

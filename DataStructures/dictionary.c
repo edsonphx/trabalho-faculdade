@@ -7,14 +7,19 @@ void* get(struct Dictionary* dict, void* key);
 void remove(struct Dictionary* dict, void* key);
 void update(struct Dictionary* dict, void* key, void* value, int valueLen);
 
+int default_compare(void* firstKey, void* secondKey);
+
 struct Dictionary* dictionary_constructor(int (*compare)(void* firstKey, void* secondKey))
 {
-    if (compare == NULL)
-        return NULL;
+
 
     struct Dictionary* result = (struct Dictionary*)malloc(sizeof(struct Dictionary));
 
-    result->compare = compare;
+	if (compare != NULL)
+        result->compare = compare;
+	else
+		result->compare = default_compare;
+    
     result->lastEntry = NULL;
 	
     result->insert = insert;
@@ -127,4 +132,9 @@ void update(struct Dictionary* dict, void* key, void* value, int valueLen)
 			
 		iterator = iterator->previous;
 	}
+}
+
+int default_compare(void* firstKey, void* secondKey)
+{
+	return strcmp((char*)firstKey,(char*)secondKey) == 0;
 }
