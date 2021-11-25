@@ -9,9 +9,11 @@ struct Dictionary
 	void* (*get)(struct Dictionary* dict, void* key);
 	void (*remove)(struct Dictionary* dict, void* key);
 	void (*update)(struct Dictionary* dict, void* key, void* value, int valueLen);
+	void** (*get_keys)(struct Dictionary* dict);
 
 	int (*compare)(void* firstKey, void* secondKey);
 
+	int numKeys;
 	struct Entry* lastEntry;
 };
 

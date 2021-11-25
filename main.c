@@ -40,7 +40,7 @@ int main(int argc, char **argv)
 				//inserindo dados
 				struct Dictionary* newUser = dictionary_constructor(NULL);
 
-				newUser->insert(newUser, "user", 5, "test", 5);
+				newUser->insert(newUser, "user", 5, "user", 5);
 				newUser->insert(newUser, "password", 9, "test", 5);
 
 				repository.insert(&repository, "Users", newUser);

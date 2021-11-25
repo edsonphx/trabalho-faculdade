@@ -6,13 +6,12 @@ void insert(struct Dictionary* dict, void* key, int keyLen, void* value, int val
 void* get(struct Dictionary* dict, void* key);
 void remove(struct Dictionary* dict, void* key);
 void update(struct Dictionary* dict, void* key, void* value, int valueLen);
+void** get_keys(struct Dictionary* dict);
 
 int default_compare(void* firstKey, void* secondKey);
 
 struct Dictionary* dictionary_constructor(int (*compare)(void* firstKey, void* secondKey))
 {
-
-
     struct Dictionary* result = (struct Dictionary*)malloc(sizeof(struct Dictionary));
 
 	if (compare != NULL)
@@ -26,6 +25,7 @@ struct Dictionary* dictionary_constructor(int (*compare)(void* firstKey, void* s
     result->get = get;
     result->update = update;
     result->remove = remove;
+	result->get_keys = get_keys;
 
     return result;
 }
@@ -71,6 +71,8 @@ void insert(struct Dictionary* dict, void* key, int keyLen, void* value, int val
 	{
 		dict->lastEntry = entry_constructor(key, keyLen, value, valueLen, NULL, NULL);
 	}
+
+	dict->numKeys++;
 }
 
 void* get(struct Dictionary* dict, void* key)
@@ -114,6 +116,8 @@ void remove(struct Dictionary* dict, void* key)
 
 		iterator = iterator->previous;
 	}
+
+	dict->numKeys--;
 }
 
 void update(struct Dictionary* dict, void* key, void* value, int valueLen)
@@ -132,6 +136,22 @@ void update(struct Dictionary* dict, void* key, void* value, int valueLen)
 			
 		iterator = iterator->previous;
 	}
+}
+
+void** get_keys(struct Dictionary* dict)
+{
+	int index = dict->numKeys;
+	void** keys = malloc(sizeof(void*) * dict->numKeys);
+
+	struct Entry* iterator = dict->lastEntry;
+	while (iterator)
+	{
+		keys[--index] = iterator->key;
+
+		iterator = iterator->previous;
+	}
+
+	return keys;
 }
 
 int default_compare(void* firstKey, void* secondKey)
